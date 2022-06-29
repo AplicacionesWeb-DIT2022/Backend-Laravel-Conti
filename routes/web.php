@@ -12,12 +12,18 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::resource('empleado', EmpleadoController::class)->middleware('auth');
-Route::resource('cliente', ClienteController::class)->middleware('auth');
-Route::resource('bicicleta', BicicletaController::class)->middleware('auth');
-Route::resource('equipamiento', EquipamientoController::class)->middleware('auth');
+// Route::resource('empleado', EmpleadoController::class)->middleware('auth');
+// Route::resource('cliente', ClienteController::class)->middleware('auth');
+// Route::resource('bicicleta', BicicletaController::class)->middleware('auth');
+// Route::resource('equipamiento', EquipamientoController::class)->middleware('auth');
 
-Auth::routes(['register'=>false, 'reset'=>false] );
+
+Route::resource('empleado', EmpleadoController::class);
+Route::resource('cliente', ClienteController::class);
+Route::resource('bicicleta', BicicletaController::class);
+Route::resource('equipamiento', EquipamientoController::class);
+
+Auth::routes(['register'=>true, 'reset'=>false] );
 
 Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
 
